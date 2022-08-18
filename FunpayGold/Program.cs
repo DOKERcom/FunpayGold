@@ -1,6 +1,12 @@
+using FunpayGold.MVC;
+
 var builder = WebApplication.CreateBuilder(args);
 
+var configuration = builder.Configuration;
+
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddMvcServices(configuration.GetSection("MvcServices"));
 
 var app = builder.Build();
 
