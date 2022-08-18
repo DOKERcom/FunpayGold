@@ -24,7 +24,17 @@ namespace FunpayGold.Controllers
         }
 
         [HttpPost]
-        public async Task Register(RegisterViewModel viewModel)
+        public async Task<IActionResult> Register(RegisterViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                return Redirect("/Home/Index");
+            }
+            return null;
+        }
+
+        [HttpPost]
+        public async Task SignIn(SignInViewModel viewModel)
         {
             if (ModelState.IsValid)
             {

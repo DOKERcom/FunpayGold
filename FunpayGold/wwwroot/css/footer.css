@@ -1,5 +1,8 @@
 ﻿.footer {
-
-    height: 50px;
-    background-color: aquamarine;
+    height: 100%;
+    grid-area: footer;
+    background-color: #c7dcff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -1,6 +1,45 @@
 ﻿.header {
+    height: 100%;
+    grid-area: header;
+    background-color: #c7dcff;
+    display: grid;
+    grid-template: 100% / 70px auto auto 70px;
+    grid-template-areas:
+        "buf_l logo nav buf_r";
+}
 
-    height: 70px;
+.header_bufl {
+    width: 100%;
+    grid-area: buf_l;
+}
+.header_center {
+    grid-area: logo;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
 
-    background-color: antiquewhite;
+    .header_center div {
+        font-size: 30px;
+    }
+
+.header_right {
+    grid-area: nav;
+    width: 100%;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+    .header_right div {
+        font-size: 24px;
+    }
+    .header_ul {
+    
+    
+    }
+
+.header_bufr {
+    width: 100%;
+    grid-area: buf_r;
 }

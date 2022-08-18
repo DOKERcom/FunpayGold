@@ -1,0 +1,28 @@
+﻿.main_container {
+    min-height: 100%;
+    max-width: 100%;
+    display: grid;
+    grid-template: 0.5fr 1fr 0.5fr / 0.5fr 1fr 0.5fr;
+    grid-template-areas:
+        "left_0 middle_0 right_0"
+        "left_1 middle_1 right_1"
+        "left_2 middle_2 right_2";
+}
+
+.mainform {
+    grid-area: middle_1;
+    display: flex;
+    justify-content: center;
+}
+
+.hideform{
+    display:none;
+}
+
+
+.gotobtn{
+
+    cursor:pointer;
+
+    color:darkslateblue;
+}

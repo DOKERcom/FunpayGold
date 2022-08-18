@@ -2,19 +2,60 @@
     ViewData["Title"] = "Home Page";
 }
 
-<form>
-    <div class="lg-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+<link rel="stylesheet" href="~/css/home_index.css" type="text/css"/>
+
+<div class="main_container">
+    <div class="mainform">
+        <form id="SigninUserForm" class="g-3 col-sm-7 rounded p-4 needs-validation" novalidate>
+            <div class="col justify-content-center p-2 align-self-center">
+                <label for="Username" class="form-label">Ваш логин:</label>
+                <input type="text" pattern="[A-z0-9]{3,}" class="form-control" id="S_Username" placeholder="Введите логин..." name="login" required>
+                <div class="invalid-feedback">Пожалуйста, используйте A-z, 0-9 минимум 3 символа.</div>
+            </div>
+            <div class="col justify-content-center p-2 align-self-center">
+                <label for="Password" class="form-label">Ваш пароль:</label>
+                <input type="password" pattern="^(?=.*[0-9])(?=.*[!#$%^&*{}\[\]])[a-zA-Z0-9!#$%^&*{}\[\]]{8,25}$" class="form-control" id="S_Password" placeholder="Введите пароль..." name="pswd" required>
+                <div class="invalid-feedback">Пожалуйста, используйте A-z, 0-9, !#$%^&*{}[] минимум 8 символов.</div>
+            </div>
+            <div class="invalid-feedback">
+                Пожалуйста, введите данные верно!
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto form-row text-center">
+                <button class="btn btn-primary" type="submit">Войти в аккаунт</button>
+                <div>
+                    <a  class="gotobtn"  id="GoToRegister" >Нет аккаунта? Зарегистрируйтесь!</a>
+                </div>
+            </div>
+        </form>
+
+         <form id="RegisterUserForm" class="g-3 col-sm-7 rounded p-4 needs-validation hideform" novalidate>
+            <div class="col justify-content-center p-2 align-self-center">
+                <label for="Username" class="form-label">Ваш логин:</label>
+                <input type="text" pattern="[A-z0-9]{3,}" class="form-control" id="R_Username" placeholder="Введите логин..." name="login" required>
+                <div class="invalid-feedback">Пожалуйста, используйте A-z, 0-9 минимум 3 символа.</div>
+            </div>
+            <div class="col justify-content-center p-2 align-self-center">
+                <label for="Email" class="form-label">Ваша почта:</label>
+                <input type="text" pattern="^([\w\.\-]+)@@([\w\-]+)((\.(\w){2,3})+)$" class="form-control" id="R_Email" placeholder="Введите email..." name="email" required>
+                <div class="invalid-feedback">Пожалуйста, используйте реальный адрес електронной почты.</div>
+            </div>
+            <div class="col justify-content-center p-2 align-self-center">
+                <label for="Password" class="form-label">Ваш пароль:</label>
+                <input type="password" pattern="^(?=.*[0-9])(?=.*[!#$%^&*{}\[\]])[a-zA-Z0-9!#$%^&*{}\[\]]{8,25}$" class="form-control" id="R_Password" placeholder="Введите пароль..." name="pswd" required>
+                <div class="invalid-feedback">Пожалуйста, используйте A-z, 0-9, !#$%^&*{}[] минимум 8 символов.</div>
+            </div>
+            <div class="invalid-feedback">
+                Пожалуйста, введите данные верно!
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto form-row text-center">
+                <button class="btn btn-primary" type="submit">Зарегистрироваться</button>
+                 <div>
+                    <a class="gotobtn" id="GoToSignIn" >Зарегистрированы? Войдите!</a>
+                </div>
+            </div>
+
+        </form>
     </div>
-    <div class="lg-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
-    </div>
-    <div class="lg-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>
+<script src="/js/toast.js"></script>
+<script src="/js/home_index.js"></script>
