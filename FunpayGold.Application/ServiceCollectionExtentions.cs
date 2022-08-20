@@ -25,6 +25,8 @@ namespace FunpayGold.Application
 
             services.AddTransient<IUsersService, UsersService>();
 
+            services.AddTransient<IBotsService, BotsService>();
+
             return services;
 
         }

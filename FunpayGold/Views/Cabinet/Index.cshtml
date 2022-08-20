@@ -1,1 +1,130 @@
-﻿<p>It's your cabinet!</p>
+﻿@{
+    ViewData["Title"] = "Cabinet Page";
+}
+<link rel="stylesheet" href="~/css/simple-notify.min.css" type="text/css"/>
+<link rel="stylesheet" href="~/css/cabinet_index.css" type="text/css"/>
+
+<div class="main_container">
+    <div class="mybotsform">
+        <h2>Мои боты</h2>         
+        <table class="table table-primary table-hover">
+        <thead>
+            <tr>
+            <th>ИНДЕТИФИКАТОР</th>
+            <th>НАЗВАНИЕ</th>
+            <th>АКТИВНОСТЬ</th>
+            <th>УПРАВЛЕНИЕ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td>1233132242122</td>
+            <th>Мой бот 1</th>
+            <td><button class="info btn btn-primary btn-sm"><i class="fa-solid fa-barcode-read"></i></button></td>
+            <td class="settings_btn_block">
+                <button class="stopbot btn btn-primary btn-sm"><i class="flexitem fa-solid fa-stop"></i></button>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#EditBotSettingsModal" class="editbot btn btn-primary btn-sm"><i class="flexitem fa-solid fa-pen-to-square"></i></button>
+            </td>
+            </tr>
+            <tr>
+            <td>5643525253535</td>
+            <th>Мой бот 2</th>
+            <td><button class="info btn btn-primary btn-sm"><i class="fa-solid fa-barcode-read"></i></button></td>
+            <td class="settings_btn_block">
+                <button class="startbot btn btn-primary btn-sm"><i class="flexitem fa-solid fa-play"></i></button>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#EditBotSettingsModal" class="editbot btn btn-primary btn-sm"><i class="flexitem fa-solid fa-pen-to-square"></i></button>
+            </td>
+            </tr>
+            <tr>
+            <td>8763472353535</td>
+            <th>Мой бот 3</th>
+            <td><button class="info btn btn-primary btn-sm"><i class="fa-solid fa-barcode-read"></i></button></td>
+            <td class="settings_btn_block">
+                <button class="stopbot btn btn-primary btn-sm"><i class="flexitem fa-solid fa-stop"></i></button>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#EditBotSettingsModal" class="editbot btn btn-primary btn-sm"><i class="flexitem fa-solid fa-pen-to-square"></i></button>
+            </td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="EditBotSettingsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Настройки</h5>
+            </div>
+            <div class="modal-body">
+
+            <form class="row g-3 needs-validation" novalidate>
+              <div class="col-md-6">
+                <label for="BotName" class="form-label">Название бота</label>
+                <input type="text" class="form-control" id="BotName">
+              </div>
+              <div class="proxysettings">
+                  <div class="col-md-3">
+                    <label for="validationCustom03" class="form-label">Ip (Прокси)</label>
+                    <input type="text" class="form-control" id="ProxyIp" required>
+                    <div class="invalid-feedback">
+                      Укажите правильный ip адрес прокси.
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <label for="validationCustom03" class="form-label">Логин (Прокси)</label>
+                    <input type="text" class="form-control" id="ProxyLogin" required>
+                    <div class="invalid-feedback">
+                      Укажите верный логин от прокси.
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <label for="validationCustom03" class="form-label">Пароль (Прокси)</label>
+                    <input type="text" class="form-control" id="ProxyPassword" required>
+                    <div class="invalid-feedback">
+                      Укажите верный пароль от прокси.
+                    </div>
+                  </div>
+              </div>
+              <div class="accountsettings">
+                  <div class="col-md-3">
+                    <label for="AccountLogin" class="form-label">Логин (Аккаунт)</label>
+                    <input type="text" class="form-control" id="AccountLogin" required>
+                    <div class="invalid-feedback">
+                      Укажите верный логин.
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <label for="AccountPassword" class="form-label">Пароль (Аккаунт)</label>
+                    <input type="text" class="form-control" id="AccountPassword" required>
+                    <div class="invalid-feedback">
+                      Укажите верный пароль.
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <label for="AccountMobile" class="form-label">Номер телефона (Аккаунт)</label>
+                    <input type="text" class="form-control" id="AccountMobile" required>
+                    <div class="invalid-feedback">
+                      Укажите верный номер телефона.
+                    </div>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <label for="TelegramKey" class="form-label">Ключ телеграм бота</label>
+                <input type="text" class="form-control" id="TelegramKey">
+              </div>
+              <div class="col-12">
+                <button class="btn btn-primary" type="submit">Сохранить изменения</button>
+              </div>
+            </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/simple-notify.min.js"></script>
+<script src="/js/cabinet_index.js"></script>

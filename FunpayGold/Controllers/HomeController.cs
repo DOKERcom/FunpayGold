@@ -47,7 +47,12 @@ namespace FunpayGold.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var identity = HttpContext.User.Identity;
+
+            if (identity != null && identity.IsAuthenticated)
+                return Redirect("/Cabinet");
+            else
+                return View();
         }
 
         [HttpPost]

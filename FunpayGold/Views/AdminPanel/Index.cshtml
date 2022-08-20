@@ -1,0 +1,71 @@
+﻿@using FunpayGold.MVC.ViewModels
+@model AdminPanelViewModel;
+@{
+    ViewData["Title"] = "Cabinet AdminPanel";
+}
+
+<script>var AdminPanelViewModel = @Json.Serialize(Model);</script>
+
+<link rel="stylesheet" href="~/css/simple-notify.min.css" type="text/css"/>
+<link rel="stylesheet" href="~/css/adminpanel_index.css" type="text/css"/>
+
+<div class="main_container">
+    <div class="usersform">
+        <h2>Пользователи</h2>         
+        <table class="table table-primary table-hover">
+        <thead>
+            <tr>
+            <th>ИНДЕТИФИКАТОР</th>
+            <th>ИМЯ ПОЛЬЗОВАТЕЛЯ</th>
+            <th>УПРАВЛЕНИЕ БОТАМИ</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var user in Model.Users) 
+                {
+                <tr>
+                    <td>@user.Id</td>
+                    <th>@user.Username</th>
+                    <td class="settings_btn_block">
+                        <button type="button" onclick="UpdateBotSettingsModal('@user.Id');" data-bs-toggle="modal" data-bs-target="#EditBotSettingsModal" class="editbots btn btn-primary btn-sm"><i class="flexitem fa-solid fa-pen-to-square"></i></button>
+                    </td>
+                </tr>
+                }
+            }
+        </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="EditBotSettingsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">БОТЫ ПОЛЬЗОВАТЕЛЯ</h5>
+            </div>
+            <div class="modal-body">
+        
+                <table id="BotSettingsModalTable" class="table table-primary table-hover">
+                <thead>
+                    <tr>
+                        <th>ИНДЕТИФИКАТОР БОТА</th>
+                        <th>УПРАВЛЕНИЕ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @*added by js*@
+                </tbody>
+                </table>
+                <button id="AddBotButton" type="button" class="btn btn-primary"><i class="fa-solid fa-circle-plus"> ADD BOT</i></button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/simple-notify.min.js"></script>
+<script src="/js/adminpanel_index.js"></script>

@@ -1,9 +1,10 @@
-﻿namespace FunpayGold.Persistence.Entities;
+﻿namespace FunpayGold.Application.Models;
 
-public class TaskEntity
+public class BotModel
 {
-
     public Guid Id { get; set; }
+
+    public string Name { get; set; }
 
     public string Proxy { get; set; }
 
@@ -18,5 +19,4 @@ public class TaskEntity
     public string AccountPhoneNumber { get; set; }
 
     public string TelegramBotKey { get; set; }
-
 }

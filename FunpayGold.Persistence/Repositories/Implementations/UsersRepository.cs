@@ -32,12 +32,14 @@ public class UsersRepository : IUsersRepository
 
     public async Task<List<UserEntity>> GetAllUsers()
     {
-        return await _userManager.Users.ToListAsync();
+        return await _userManager.Users.Include(b=>b.Bots).ToListAsync();
     }
 
     public async Task<IdentityResult> UpdateUser(UserEntity user)
     {
-        return await _userManager.UpdateAsync(user);
+        var result = await _userManager.UpdateAsync(user);
+
+        return result;
     }
 
     public async Task<IdentityResult> CreateUser(UserEntity user, string password)

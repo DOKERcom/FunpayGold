@@ -1,0 +1,33 @@
+﻿.main_container {
+    min-height: 100%;
+    max-width: 100%;
+    display: grid;
+    grid-template: 0.3fr 1fr 0.3fr / 0.3fr 1fr 0.3fr;
+    grid-template-areas:
+        "left_0 middle_0 right_0"
+        "left_1 middle_1 right_1"
+        "left_2 middle_2 right_2";
+}
+.usersform {
+    grid-area: middle_1;
+    border: 3px solid black;
+    border-radius: 25px 25px 25px 25px;
+}
+.usersform h2 {
+    padding: 5px 15px;
+}
+
+table th, td {
+    text-align: center;
+}
+
+.modal-dialog {
+    max-width: 750px;
+}
+
+.editbots {
+    color: darkblue;
+}
+.deletebot{
+    color: darkred;
+}

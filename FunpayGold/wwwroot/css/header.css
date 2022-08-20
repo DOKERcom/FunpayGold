@@ -36,8 +36,13 @@
     }
     .header_ul {
     
+        display: flex;
+        flex-direction: row;
     
     }
+.header_ul li{
+    margin: 0 15px;
+}
 
 .header_bufr {
     width: 100%;

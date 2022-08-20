@@ -13,7 +13,7 @@ namespace FunpayGold.Application.AutoMapper.Profiles
     {
         public ApplicationMappingProfile()
         {
-            CreateMap<TaskEntity, TaskModel>().ReverseMap();
+            CreateMap<BotEntity, BotModel>().ReverseMap();
 
             CreateMap<UserEntity, UserModel>().ReverseMap();
         }

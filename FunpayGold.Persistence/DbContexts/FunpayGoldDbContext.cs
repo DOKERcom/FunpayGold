@@ -8,7 +8,7 @@ public sealed class FunpayGoldDbContext : IdentityDbContext<UserEntity>
 {
     public new DbSet<UserEntity> Users { get; set; }
 
-    public DbSet<TaskEntity> Tasks { get; set; }
+    public DbSet<BotEntity> Bots { get; set; }
 
     public FunpayGoldDbContext(
         DbContextOptions<FunpayGoldDbContext> options

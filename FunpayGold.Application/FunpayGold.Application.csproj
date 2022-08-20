@@ -10,7 +10,6 @@
     <Folder Include="QueryHandlers\" />
     <Folder Include="Queries\" />
     <Folder Include="Services\Implementations\" />
-    <Folder Include="Services\Interfaces\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -12,6 +12,10 @@ namespace FunpayGold.MVC.AutoMapper.Profiles
             CreateMap<SignInViewModel, SignInModel>().ReverseMap();
 
             CreateMap<RegisterViewModel, RegisterModel>().ReverseMap();
+
+            CreateMap<UserViewModel, UserModel>().ReverseMap();
+
+            CreateMap<BotViewModel, BotModel>().ReverseMap();
         }
 
     }

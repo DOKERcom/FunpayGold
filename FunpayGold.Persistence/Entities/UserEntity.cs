@@ -4,10 +4,10 @@ namespace FunpayGold.Persistence.Entities;
 
 public class UserEntity : IdentityUser
 {
-    public List<TaskEntity> Tasks { get; set; }
+    public List<BotEntity> Bots { get; set; }
 
     public UserEntity()
     {
-        Tasks = new List<TaskEntity>();
+        Bots = new List<BotEntity>();
     }
 }
