@@ -80,25 +80,25 @@ function Register() {
 }
 
 function ResultActionToast(json) {
-    if (json.resultAction == "200") {
-        window.location.href = "/Cabinet";
+    if (json.resultCode == 200) {
+        window.location.href = "/";
     }
-    else if (json.resultAction == "400") {
-        new Toast({
+    else if (json.resultCode == 400) {
+        new Notify({
             title: 'Warning',
             text: json.resultMessage,
-            theme: 'warning',
-            autohide: true,
-            interval: 3000
-        });
+            autoclose: true,
+            status: 'warning',
+            autotimeout: 3000
+        })
     }
-    else if (json.resultAction == "500") {
-        new Toast({
+    else if (json.resultCode == 500) {
+        new Notify({
             title: 'Error',
             text: json.resultMessage,
-            theme: 'danger',
-            autohide: true,
-            interval: 3000
-        });
+            autoclose: true,
+            status: 'error',
+            autotimeout: 3000
+        })
     }
 }

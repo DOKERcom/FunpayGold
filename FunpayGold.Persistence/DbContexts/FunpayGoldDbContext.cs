@@ -11,14 +11,9 @@ public sealed class FunpayGoldDbContext : IdentityDbContext<UserEntity>
     public DbSet<TaskEntity> Tasks { get; set; }
 
     public FunpayGoldDbContext(
-        DbContextOptions<FunpayGoldDbContext> options, 
-        DbSet<UserEntity> users,
-        DbSet<TaskEntity> tasks
+        DbContextOptions<FunpayGoldDbContext> options
         ) : base(options)
     {
-        Users = users;
-
-        Tasks = tasks;
 
         Database.EnsureCreated();
     }

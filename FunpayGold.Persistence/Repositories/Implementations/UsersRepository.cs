@@ -25,6 +25,11 @@ public class UsersRepository : IUsersRepository
         return user;
     }
 
+    public async Task<bool> IsUserExists(string userName)
+    {
+        return GetUserByUserName(userName) != null ? true : false;
+    }
+
     public async Task<List<UserEntity>> GetAllUsers()
     {
         return await _userManager.Users.ToListAsync();

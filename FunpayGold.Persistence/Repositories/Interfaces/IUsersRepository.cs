@@ -9,6 +9,8 @@ public interface IUsersRepository
 
     public Task<UserEntity> GetUserByUserName(string userName);
 
+    public Task<bool> IsUserExists(string userName);
+
     public Task<List<UserEntity>> GetAllUsers();
 
     public Task<IdentityResult> UpdateUser(UserEntity user);
