@@ -26,7 +26,7 @@ public class UsersService : IUsersService
         return _mapper.Map<UserModel>(await _usersRepository.GetUserById(id));
     }
 
-    public async Task<UserModel> GetUserByLogin(string userName)
+    public async Task<UserModel> GetUserByUserName(string userName)
     {
         return _mapper.Map<UserModel>(await _usersRepository.GetUserByUserName(userName));
     }

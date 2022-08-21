@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using FunpayGold.Application.Commands.CabinetController;
 using FunpayGold.Application.Services.Interfaces;
 using FunpayGold.MVC.ViewModels;
 using FunpayGold.Persistence.Entities;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -16,20 +18,57 @@ namespace FunpayGold.MVC.Controllers
 
         private readonly IUsersService _usersService;
 
+        private readonly IMediator _mediator;
+
         private readonly IMapper _mapper;
-        public CabinetController(SignInManager<UserEntity> signInManager, IUsersService usersService, IMapper mapper)
+        public CabinetController(SignInManager<UserEntity> signInManager, IUsersService usersService, IMapper mapper, IMediator mediator)
         {
             _signInManager = signInManager;
 
             _usersService = usersService;
 
             _mapper = mapper;
+
+            _mediator = mediator;
         }
 
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            string userName = HttpContext.User.Identity.Name;
+
+            if (!string.IsNullOrEmpty(userName))
+            {
+                var user = _mapper.Map<UserViewModel>(await _usersService.GetUserByUserName(userName));
+
+                return View(new CabinetViewModel { User = user });
+            }
+
+            return await Logout();
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> TurnOnBot(string botId)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _mediator.Send(new TurnOnBotCommand(botId));
+
+                return Json(result);
+            }
+            return Json(400, "Бот был не найден!");
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> TurnOffBot(string botId)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _mediator.Send(new TurnOffBotCommand(botId));
+
+                return Json(result);
+            }
+            return Json(400, "Бот был не найден!");
         }
 
         public async Task<IActionResult> Logout()

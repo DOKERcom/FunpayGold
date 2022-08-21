@@ -13,9 +13,13 @@ namespace FunpayGold.Persistence.Repositories.Interfaces
 
         public Task<IdentityResult> AddBotToUserById(string userId);
 
-        public Task<int> DeleteBotById(string botId);
+        public Task<int> DeleteBotById(Guid botId);
 
         public Task<int> CreateBot(BotEntity bot);
+
+        public Task<int> UpdateBot(BotEntity bot);
+
+        public Task<BotEntity?> GetBotById(Guid botId);
 
     }
 }

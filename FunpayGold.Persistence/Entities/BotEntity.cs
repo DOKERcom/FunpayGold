@@ -7,6 +7,8 @@ public class BotEntity
 
     public string? Name { get; set; }
 
+    public bool IsActive { get; set; } = false;
+
     public string? Proxy { get; set; }
 
     public string? ProxyLogin { get; set; }

@@ -39,6 +39,17 @@ namespace FunpayGold.Persistence.Repositories.Implementations
             return result;
         }
 
+        public async Task<int> UpdateBot(BotEntity bot)
+        {
+            _db.ChangeTracker.Clear();
+
+            _db.Bots.Update(bot);
+
+            var result = await _db.SaveChangesAsync();
+
+            return result;
+        }
+
         public async Task<IdentityResult> AddBotToUserById(string userId)
         {
             var bot = new BotEntity();
@@ -57,12 +68,17 @@ namespace FunpayGold.Persistence.Repositories.Implementations
             return result;
         }
 
-
-        public async Task<int> DeleteBotById(string botId)
+        public async Task<BotEntity?> GetBotById(Guid botId)
         {
-            Guid botIdGuid = new Guid(botId);
+            var bot = await _db.Bots.Where(b => b.Id == botId).FirstOrDefaultAsync();
 
-            var bot = await _db.Bots.Where(b => b.Id == botIdGuid).FirstOrDefaultAsync();
+            return bot;
+        }
+
+
+        public async Task<int> DeleteBotById(Guid botId)
+        {
+            var bot = await _db.Bots.Where(b => b.Id == botId).FirstOrDefaultAsync();
 
             if (bot != null)
                 _db.Bots.Remove(bot);

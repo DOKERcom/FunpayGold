@@ -5,6 +5,8 @@
 
         public Guid Id { get; set; }
 
+        public bool IsActive { get; set; }
+
         public string Name { get; set; }
 
         public string Proxy { get; set; }

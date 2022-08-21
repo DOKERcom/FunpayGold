@@ -22,7 +22,7 @@ namespace FunpayGold.Application.CommandHandlers.AdminPanelController
         public async Task<ResultActionModel> Handle(AddBotCommand request, CancellationToken cancellationToken)
         {
 
-            await _botsService.AddBot(request.UserId);
+            await _botsService.AddBotToUserById(request.UserId);
 
             return new ResultActionModel(200, $"Бот был добавлен к пользователю {request.UserId}!");
         }

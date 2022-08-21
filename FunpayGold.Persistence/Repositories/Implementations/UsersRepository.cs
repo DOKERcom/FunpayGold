@@ -21,7 +21,8 @@ public class UsersRepository : IUsersRepository
 
     public async Task<UserEntity> GetUserByUserName(string userName)
     {
-        var user = await _userManager.FindByNameAsync(userName);
+        var user = await _userManager.Users.Include(b => b.Bots).Where(u=>u.UserName == userName).FirstOrDefaultAsync();
+
         return user;
     }
 

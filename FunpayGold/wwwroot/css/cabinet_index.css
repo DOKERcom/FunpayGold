@@ -2,7 +2,7 @@
     min-height: 100%;
     max-width: 100%;
     display: grid;
-    grid-template: 0.3fr 1fr 0.3fr / 0.3fr 1fr 0.3fr;
+    grid-template: 15% 70% 15% / 15% 70% 15%;
     grid-template-areas:
         "left_0 middle_0 right_0"
         "left_1 middle_1 right_1"
@@ -17,14 +17,14 @@
 .mybotsform h2{
     padding: 5px 15px;
 }
-
     .mybotsform table th, td {
-        text-align:center;
+        text-align: center;
+        vertical-align: middle;
     }
 
-.modal-dialog {
-    max-width: 750px;
-}
+    .modal-dialog {
+        max-width: 750px;
+    }
 
 .settings_btn_block {
     display: flex;
@@ -35,6 +35,7 @@
 .flexitem {
     flex: 1 1 auto;
     cursor: pointer;
+    width: 15px;
 }
 .startbot {
     color: green;

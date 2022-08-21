@@ -1,4 +1,7 @@
-﻿using FunpayGold.Application.Services.Interfaces;
+﻿using AutoMapper;
+using FunpayGold.Application.Models;
+using FunpayGold.Application.Services.Interfaces;
+using FunpayGold.Persistence.Entities;
 using FunpayGold.Persistence.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -13,19 +16,54 @@ namespace FunpayGold.Application.Services.Implementations
 
         private readonly IBotsRepository _botsRepository;
 
-        public BotsService(IBotsRepository botsRepository)
+        private readonly IMapper _mapper;
+
+        public BotsService(IBotsRepository botsRepository, IMapper mapper)
         {
             _botsRepository = botsRepository;
+
+            _mapper = mapper;
         }
 
-        public async Task AddBot(string userId)
+        public async Task AddBotToUserById(string userId)
         {
             await _botsRepository.AddBotToUserById(userId);
         }
 
         public async Task DeleteBotById(string botId)
         {
-            await _botsRepository.DeleteBotById(botId);
+            await _botsRepository.DeleteBotById(new Guid(botId));
         }
+
+        public async Task<BotModel?> GetBotById(string botId)
+        {
+            var botEntity = await _botsRepository.GetBotById(new Guid(botId));
+
+            var bot = _mapper.Map<BotModel>(botEntity);
+
+            return bot;
+        }
+
+        public async Task<int> CreateBot()
+        {
+            BotModel bot = new BotModel();
+
+            var botEntity = _mapper.Map<BotEntity>(bot);
+
+            var result = await _botsRepository.CreateBot(botEntity);
+
+            return result;
+        }
+
+        public async Task<int> UpdateBot(BotModel bot)
+        {
+            var botEntity = _mapper.Map<BotEntity>(bot);
+
+            var result = await _botsRepository.UpdateBot(botEntity);
+
+            return result;
+        }
+
+
     }
 }

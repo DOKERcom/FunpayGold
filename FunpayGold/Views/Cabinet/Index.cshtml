@@ -1,4 +1,6 @@
-﻿@{
+﻿@using FunpayGold.MVC.ViewModels
+@model CabinetViewModel;
+@{
     ViewData["Title"] = "Cabinet Page";
 }
 <link rel="stylesheet" href="~/css/simple-notify.min.css" type="text/css"/>
@@ -17,33 +19,25 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-            <td>1233132242122</td>
-            <th>Мой бот 1</th>
-            <td><button class="info btn btn-primary btn-sm"><i class="fa-solid fa-barcode-read"></i></button></td>
-            <td class="settings_btn_block">
-                <button class="stopbot btn btn-primary btn-sm"><i class="flexitem fa-solid fa-stop"></i></button>
-                <button type="button" data-bs-toggle="modal" data-bs-target="#EditBotSettingsModal" class="editbot btn btn-primary btn-sm"><i class="flexitem fa-solid fa-pen-to-square"></i></button>
-            </td>
-            </tr>
-            <tr>
-            <td>5643525253535</td>
-            <th>Мой бот 2</th>
-            <td><button class="info btn btn-primary btn-sm"><i class="fa-solid fa-barcode-read"></i></button></td>
-            <td class="settings_btn_block">
-                <button class="startbot btn btn-primary btn-sm"><i class="flexitem fa-solid fa-play"></i></button>
-                <button type="button" data-bs-toggle="modal" data-bs-target="#EditBotSettingsModal" class="editbot btn btn-primary btn-sm"><i class="flexitem fa-solid fa-pen-to-square"></i></button>
-            </td>
-            </tr>
-            <tr>
-            <td>8763472353535</td>
-            <th>Мой бот 3</th>
-            <td><button class="info btn btn-primary btn-sm"><i class="fa-solid fa-barcode-read"></i></button></td>
-            <td class="settings_btn_block">
-                <button class="stopbot btn btn-primary btn-sm"><i class="flexitem fa-solid fa-stop"></i></button>
-                <button type="button" data-bs-toggle="modal" data-bs-target="#EditBotSettingsModal" class="editbot btn btn-primary btn-sm"><i class="flexitem fa-solid fa-pen-to-square"></i></button>
-            </td>
-            </tr>
+        @{
+            foreach(var bot in Model.User.Bots)
+            {
+                <tr>
+                    <td>@bot.Id</td>
+                    <th>@bot.Name</th>
+                    <td><button class="info btn btn-primary btn-sm"><i class="fa-solid fa-barcode-read"></i></button></td>
+                    <td class="settings_btn_block">
+                    @if(bot.IsActive){
+                        <button id="TurnOffBot_@bot.Id" onclick="TurnOffBot('@bot.Id')" class="stopbot btn btn-primary btn-sm"><i class="flexitem fa-solid fa-stop"></i></button>
+                    }
+                    else{
+                        <button id="TurnOnBot_@bot.Id" onclick="TurnOnBot('@bot.Id')" class="startbot btn btn-primary btn-sm"><i class="flexitem fa-solid fa-play"></i></button>
+                    }
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#EditBotSettingsModal" class="editbot btn btn-primary btn-sm"><i class="flexitem fa-solid fa-pen-to-square"></i></button>
+                    </td>
+                </tr>
+            }
+        }
         </tbody>
         </table>
     </div>

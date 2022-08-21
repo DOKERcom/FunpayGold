@@ -7,7 +7,7 @@ public interface IUsersService
 {
     public Task<UserModel> GetUserById(string id);
 
-    public Task<UserModel> GetUserByLogin(string userName);
+    public Task<UserModel> GetUserByUserName(string userName);
 
     public Task<bool> IsUserExists(string userName);
 
