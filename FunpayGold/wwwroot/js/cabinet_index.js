@@ -14,13 +14,85 @@
                 form.classList.add('was-validated');
 
                 if (form.checkValidity()) {
-                    
+                    UpdateBotSettings();
                 }
 
             }, false)
         })
 })();
 //---------------------------------------------
+
+function ModalInputSetter(elemId, value) {
+    var elem = document.getElementById(elemId);
+    if (value != undefined)
+        elem.setAttribute("value", value);
+}
+
+function SetBotSettingsModal(botId) {
+
+    var bots = CabinetViewModel.user.bots;
+
+    document.getElementById('SettingsValidationForm').classList.remove('was-validated');
+
+    bots.forEach(function (bot) {
+        if (bot.id == botId) {
+
+            ModalInputSetter('BotId', bot.id);
+            ModalInputSetter('BotName', bot.name);
+            ModalInputSetter('ProxyIp', bot.proxyIp);
+            ModalInputSetter('ProxyLogin', bot.proxyLogin);
+            ModalInputSetter('ProxyPassword', bot.proxyPassword);
+            ModalInputSetter('AccountLogin', bot.accountLogin);
+            ModalInputSetter('AccountPassword', bot.accountPassword);
+            ModalInputSetter('AccountMobile', bot.accountMobile);
+            ModalInputSetter('TelegramBotKey', bot.telegramBotKey);
+        }
+    });
+
+}
+
+function UpdateBotSettings() {
+
+    var id = document.getElementById('BotId').value;
+    var name = document.getElementById('BotName').value;
+
+    var ProxyIp = document.getElementById('ProxyIp').value;
+    var ProxyLogin = document.getElementById('ProxyLogin').value;
+    var ProxyPassword = document.getElementById('ProxyPassword').value;
+
+    var AccountLogin = document.getElementById('AccountLogin').value;
+    var AccountPassword = document.getElementById('AccountPassword').value;
+    var AccountMobile = document.getElementById('AccountMobile').value;
+
+    var TelegramBotKey = document.getElementById('TelegramBotKey').value;
+
+    const request = new XMLHttpRequest();
+    const url = "/Cabinet/UpdateBotSettings";
+    const params = "Id=" + id
+        + "&Name=" + name
+        + "&ProxyIp=" + ProxyIp
+        + "&ProxyLogin=" + ProxyLogin
+        + "&ProxyPassword=" + ProxyPassword
+        + "&AccountLogin=" + AccountLogin
+        + "&AccountPassword=" + AccountPassword
+        + "&AccountMobile=" + AccountMobile
+        + "&TelegramBotKey=" + TelegramBotKey;
+
+
+    request.open("POST", url, true);
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.addEventListener("readystatechange", () => {
+        if (request.readyState === 4 && request.status === 200) {
+
+            var json = JSON.parse(request.responseText)
+
+            ResultActionToast(json);
+        }
+
+    });
+
+    request.send(params);
+}
 
 function TurnOffBot(botId) {
 

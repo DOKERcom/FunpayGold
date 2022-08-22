@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FunpayGold.Application.Commands.CabinetController;
+using FunpayGold.Application.Models;
 using FunpayGold.Application.Services.Interfaces;
 using FunpayGold.MVC.ViewModels;
 using FunpayGold.Persistence.Entities;
@@ -70,6 +71,23 @@ namespace FunpayGold.MVC.Controllers
             }
             return Json(400, "Бот был не найден!");
         }
+
+        [HttpPost]
+        public async Task<JsonResult> UpdateBotSettings(BotViewModel bot)
+        {
+            if (ModelState.IsValid)
+            {
+                var botModel = _mapper.Map<BotModel>(bot);
+
+                botModel.Id = new Guid(bot.Id);
+
+                var result = await _mediator.Send(new UpdateBotSettingsCommand(botModel));
+
+                return Json(result);
+            }
+            return Json(400, "Бот был не найден!");
+        }
+
 
         public async Task<IActionResult> Logout()
         {

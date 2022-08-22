@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FunpayGold.Persistence.Migrations
 {
     [DbContext(typeof(FunpayGoldDbContext))]
-    [Migration("20220820201426_Initial")]
-    partial class Initial
+    [Migration("20220821124018_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,6 +42,9 @@ namespace FunpayGold.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -59,7 +62,6 @@ namespace FunpayGold.Persistence.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("TelegramBotKey")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("UserEntityId")
@@ -69,7 +71,7 @@ namespace FunpayGold.Persistence.Migrations
 
                     b.HasIndex("UserEntityId");
 
-                    b.ToTable("Tasks");
+                    b.ToTable("Bots");
                 });
 
             modelBuilder.Entity("FunpayGold.Persistence.Entities.UserEntity", b =>

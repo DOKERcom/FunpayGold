@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace FunpayGold.Persistence.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -156,25 +156,26 @@ namespace FunpayGold.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Tasks",
+                name: "Bots",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
+                    IsActive = table.Column<bool>(type: "boolean", nullable: false),
                     Proxy = table.Column<string>(type: "text", nullable: false),
                     ProxyLogin = table.Column<string>(type: "text", nullable: false),
                     ProxyPassword = table.Column<string>(type: "text", nullable: false),
                     AccountLogin = table.Column<string>(type: "text", nullable: false),
                     AccountPassword = table.Column<string>(type: "text", nullable: false),
                     AccountPhoneNumber = table.Column<string>(type: "text", nullable: false),
-                    TelegramBotKey = table.Column<string>(type: "text", nullable: false),
+                    TelegramBotKey = table.Column<string>(type: "text", nullable: true),
                     UserEntityId = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tasks", x => x.Id);
+                    table.PrimaryKey("PK_Bots", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Tasks_AspNetUsers_UserEntityId",
+                        name: "FK_Bots_AspNetUsers_UserEntityId",
                         column: x => x.UserEntityId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
@@ -218,8 +219,8 @@ namespace FunpayGold.Persistence.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tasks_UserEntityId",
-                table: "Tasks",
+                name: "IX_Bots_UserEntityId",
+                table: "Bots",
                 column: "UserEntityId");
         }
 
@@ -241,7 +242,7 @@ namespace FunpayGold.Persistence.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Tasks");
+                name: "Bots");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

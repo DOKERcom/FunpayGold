@@ -40,6 +40,9 @@ namespace FunpayGold.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -57,7 +60,6 @@ namespace FunpayGold.Persistence.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("TelegramBotKey")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("UserEntityId")

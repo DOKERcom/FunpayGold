@@ -2,7 +2,7 @@
 
 public class UserModel
 {
-    public Guid Id { get; set; }
+    public Guid Id { get; set; } = Guid.NewGuid();
 
     public string Username { get; set; }
 

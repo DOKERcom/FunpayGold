@@ -3,6 +3,9 @@
 @{
     ViewData["Title"] = "Cabinet Page";
 }
+
+<script>var CabinetViewModel = @Json.Serialize(Model);</script>
+
 <link rel="stylesheet" href="~/css/simple-notify.min.css" type="text/css"/>
 <link rel="stylesheet" href="~/css/cabinet_index.css" type="text/css"/>
 
@@ -33,7 +36,7 @@
                     else{
                         <button id="TurnOnBot_@bot.Id" onclick="TurnOnBot('@bot.Id')" class="startbot btn btn-primary btn-sm"><i class="flexitem fa-solid fa-play"></i></button>
                     }
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#EditBotSettingsModal" class="editbot btn btn-primary btn-sm"><i class="flexitem fa-solid fa-pen-to-square"></i></button>
+                        <button onclick="SetBotSettingsModal('@bot.Id')" type="button" data-bs-toggle="modal" data-bs-target="#EditBotSettingsModal" class="editbot btn btn-primary btn-sm"><i class="flexitem fa-solid fa-pen-to-square"></i></button>
                     </td>
                 </tr>
             }
@@ -52,7 +55,10 @@
             </div>
             <div class="modal-body">
 
-            <form class="row g-3 needs-validation" novalidate>
+            <form id="SettingsValidationForm" class="row g-3 needs-validation" novalidate>
+
+              <input type="text" class="form-control" id="BotId" hidden>
+
               <div class="col-md-6">
                 <label for="BotName" class="form-label">Название бота</label>
                 <input type="text" class="form-control" id="BotName">
@@ -60,7 +66,7 @@
               <div class="proxysettings">
                   <div class="col-md-3">
                     <label for="validationCustom03" class="form-label">Ip (Прокси)</label>
-                    <input type="text" class="form-control" id="ProxyIp" required>
+                    <input type="text" pattern="^(([1-9]?\d|1\d\d|2[0-5][0-5]|2[0-4]\d)\.){3}([1-9]?\d|1\d\d|2[0-5][0-5]|2[0-4]\d)$" class="form-control" id="ProxyIp" required>
                     <div class="invalid-feedback">
                       Укажите правильный ip адрес прокси.
                     </div>
@@ -104,11 +110,11 @@
                   </div>
               </div>
               <div class="col-md-6">
-                <label for="TelegramKey" class="form-label">Ключ телеграм бота</label>
-                <input type="text" class="form-control" id="TelegramKey">
+                <label for="TelegramBotKey" class="form-label">Ключ телеграм бота</label>
+                <input type="text" class="form-control" id="TelegramBotKey">
               </div>
               <div class="col-12">
-                <button class="btn btn-primary" type="submit">Сохранить изменения</button>
+                <button id="SaveChangesBotSettings" class="btn btn-primary" type="submit">Сохранить изменения</button>
               </div>
             </form>
 

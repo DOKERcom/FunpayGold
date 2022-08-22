@@ -10,6 +10,7 @@
 }
 
 .mainform {
+    width:100%;
     grid-area: middle_1;
     display: flex;
     justify-content: center;
@@ -25,4 +26,30 @@
     cursor:pointer;
 
     color:darkslateblue;
+}
+
+@media (max-width: 425px) {
+    .main_container {
+        min-height: 100%;
+        max-width: 100%;
+        display: grid;
+        grid-template: 5% 90% 5% / 5% 90% 5%;
+        grid-template-areas:
+            "left_0 middle_0 right_0"
+            "left_1 middle_1 right_1"
+            "left_2 middle_2 right_2";
+    }
+}
+
+@media (max-width: 1024px) {
+    .main_container {
+        min-height: 100%;
+        max-width: 100%;
+        display: grid;
+        grid-template: 15% 70% 15% / 15% 70% 15%;
+        grid-template-areas:
+            "left_0 middle_0 right_0"
+            "left_1 middle_1 right_1"
+            "left_2 middle_2 right_2";
+    }
 }

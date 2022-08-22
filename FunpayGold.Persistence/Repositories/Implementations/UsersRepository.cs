@@ -28,7 +28,7 @@ public class UsersRepository : IUsersRepository
 
     public async Task<bool> IsUserExists(string userName)
     {
-        return GetUserByUserName(userName) != null ? true : false;
+        return await GetUserByUserName(userName) != null ? true : false;
     }
 
     public async Task<List<UserEntity>> GetAllUsers()
