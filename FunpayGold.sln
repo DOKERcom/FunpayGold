@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunpayGold.Application", "F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunpayGold.Persistence", "FunpayGold.Persistence\FunpayGold.Persistence.csproj", "{17C53704-62B5-446C-924A-93D17973C81F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunpayGold.Common", "FunpayGold.Common\FunpayGold.Common.csproj", "{3920ABD6-DB9B-48AF-B0FB-001091452E64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunpayGold.Common", "FunpayGold.Common\FunpayGold.Common.csproj", "{3920ABD6-DB9B-48AF-B0FB-001091452E64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunpayGold.API", "FunpayGold.API\FunpayGold.API.csproj", "{15D77FA0-AA43-466B-9209-A57012CC381E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{3920ABD6-DB9B-48AF-B0FB-001091452E64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3920ABD6-DB9B-48AF-B0FB-001091452E64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3920ABD6-DB9B-48AF-B0FB-001091452E64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15D77FA0-AA43-466B-9209-A57012CC381E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15D77FA0-AA43-466B-9209-A57012CC381E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15D77FA0-AA43-466B-9209-A57012CC381E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15D77FA0-AA43-466B-9209-A57012CC381E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
