@@ -13,7 +13,5 @@ namespace FunpayGold.Persistence.Entities
 
         public string Message { get; set; }
 
-        public BotEntity? Bot { get; set; }
-
     }
 }

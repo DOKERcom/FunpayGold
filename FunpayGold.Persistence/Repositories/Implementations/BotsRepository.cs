@@ -85,7 +85,7 @@ namespace FunpayGold.Persistence.Repositories.Implementations
 
         public async Task<int> DeleteBotById(Guid botId)
         {
-            var bot = await _db.Bots.Where(b => b.Id == botId).FirstOrDefaultAsync();
+            var bot = await _db.Bots.Include(a => a.BotActivities).Include(w=>w.Worker).Where(b => b.Id == botId).FirstOrDefaultAsync();
 
             if (bot != null)
                 _db.Bots.Remove(bot);

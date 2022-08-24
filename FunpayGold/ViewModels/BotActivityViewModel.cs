@@ -7,7 +7,5 @@
 
         public string Text { get; set; }
 
-        public BotViewModel? Bot { get; set; }
-
     }
 }

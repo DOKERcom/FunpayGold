@@ -11,7 +11,5 @@ namespace FunpayGold.Application.Models
         public Guid Id { get; set; } = Guid.NewGuid();
 
         public string Message { get; set; }
-
-        public BotModel? Bot { get; set; }
     }
 }
