@@ -36,11 +36,6 @@ namespace FunpayGold.Application.QueryHandlers.BotSettingsController
 
             ResultActionModel resultActionModel = new ResultActionModel();
 
-            foreach(var bot in worker.Bots)
-            {
-                bot.Worker = null;
-            }
-
             resultActionModel.ResultObject = worker.Bots;
 
             return resultActionModel;

@@ -31,7 +31,7 @@ namespace FunpayGold.Persistence.Repositories.Implementations
 
         public async Task<List<BotEntity>> GetAllActiveFreeBots()
         {
-            var bots = await _db.Bots.Where(b=>b.IsActive == true && b.Worker == null).ToListAsync();
+            var bots = await _db.Bots.Where(b=>b.IsActive == true && b.WorkerEntityId == null).ToListAsync();
 
             return bots;
         }
@@ -85,7 +85,7 @@ namespace FunpayGold.Persistence.Repositories.Implementations
 
         public async Task<int> DeleteBotById(Guid botId)
         {
-            var bot = await _db.Bots.Include(a => a.BotActivities).Include(w=>w.Worker).Where(b => b.Id == botId).FirstOrDefaultAsync();
+            var bot = await _db.Bots.Include(a => a.BotActivities).Where(b => b.Id == botId).FirstOrDefaultAsync();
 
             if (bot != null)
                 _db.Bots.Remove(bot);

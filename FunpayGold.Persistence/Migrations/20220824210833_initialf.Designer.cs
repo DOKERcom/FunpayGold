@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FunpayGold.Persistence.Migrations
 {
     [DbContext(typeof(FunpayGoldDbContext))]
-    [Migration("20220824205439_nefdffds")]
-    partial class nefdffds
+    [Migration("20220824210833_initialf")]
+    partial class initialf
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -86,14 +86,14 @@ namespace FunpayGold.Persistence.Migrations
                     b.Property<string>("UserEntityId")
                         .HasColumnType("text");
 
-                    b.Property<Guid?>("WorkerId")
+                    b.Property<Guid?>("WorkerEntityId")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserEntityId");
 
-                    b.HasIndex("WorkerId");
+                    b.HasIndex("WorkerEntityId");
 
                     b.ToTable("Bots");
                 });
@@ -318,11 +318,9 @@ namespace FunpayGold.Persistence.Migrations
                         .WithMany("Bots")
                         .HasForeignKey("UserEntityId");
 
-                    b.HasOne("FunpayGold.Persistence.Entities.WorkerEntity", "Worker")
+                    b.HasOne("FunpayGold.Persistence.Entities.WorkerEntity", null)
                         .WithMany("Bots")
-                        .HasForeignKey("WorkerId");
-
-                    b.Navigation("Worker");
+                        .HasForeignKey("WorkerEntityId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FunpayGold.Persistence.Migrations
 {
     [DbContext(typeof(FunpayGoldDbContext))]
-    [Migration("20220824200021_nefdf")]
-    partial class nefdf
+    [Migration("20220824210443_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,7 +30,7 @@ namespace FunpayGold.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("BotId")
+                    b.Property<Guid?>("BotEntityId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Message")
@@ -39,7 +39,7 @@ namespace FunpayGold.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BotId");
+                    b.HasIndex("BotEntityId");
 
                     b.ToTable("BotActivities");
                 });
@@ -86,14 +86,17 @@ namespace FunpayGold.Persistence.Migrations
                     b.Property<string>("UserEntityId")
                         .HasColumnType("text");
 
-                    b.Property<Guid?>("WorkerId")
+                    b.Property<string>("WorkerEntityId")
+                        .HasColumnType("text");
+
+                    b.Property<Guid?>("WorkerEntityId1")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserEntityId");
 
-                    b.HasIndex("WorkerId");
+                    b.HasIndex("WorkerEntityId1");
 
                     b.ToTable("Bots");
                 });
@@ -307,11 +310,9 @@ namespace FunpayGold.Persistence.Migrations
 
             modelBuilder.Entity("FunpayGold.Persistence.Entities.BotActivityEntity", b =>
                 {
-                    b.HasOne("FunpayGold.Persistence.Entities.BotEntity", "Bot")
+                    b.HasOne("FunpayGold.Persistence.Entities.BotEntity", null)
                         .WithMany("BotActivities")
-                        .HasForeignKey("BotId");
-
-                    b.Navigation("Bot");
+                        .HasForeignKey("BotEntityId");
                 });
 
             modelBuilder.Entity("FunpayGold.Persistence.Entities.BotEntity", b =>
@@ -320,11 +321,9 @@ namespace FunpayGold.Persistence.Migrations
                         .WithMany("Bots")
                         .HasForeignKey("UserEntityId");
 
-                    b.HasOne("FunpayGold.Persistence.Entities.WorkerEntity", "Worker")
+                    b.HasOne("FunpayGold.Persistence.Entities.WorkerEntity", null)
                         .WithMany("Bots")
-                        .HasForeignKey("WorkerId");
-
-                    b.Navigation("Worker");
+                        .HasForeignKey("WorkerEntityId1");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

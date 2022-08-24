@@ -23,7 +23,7 @@ public class BotEntity
 
     public string? TelegramBotKey { get; set; } = String.Empty;
 
-    public WorkerEntity? Worker { get; set; }
+    public Guid? WorkerEntityId { get; set; }
 
     public List<BotActivityEntity> BotActivities { get; set; }
 

@@ -50,6 +50,17 @@ namespace FunpayGold.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Workers",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Workers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -160,16 +171,18 @@ namespace FunpayGold.Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: true),
                     IsActive = table.Column<bool>(type: "boolean", nullable: false),
-                    Proxy = table.Column<string>(type: "text", nullable: false),
+                    ProxyIp = table.Column<string>(type: "text", nullable: false),
                     ProxyLogin = table.Column<string>(type: "text", nullable: false),
                     ProxyPassword = table.Column<string>(type: "text", nullable: false),
                     AccountLogin = table.Column<string>(type: "text", nullable: false),
                     AccountPassword = table.Column<string>(type: "text", nullable: false),
-                    AccountPhoneNumber = table.Column<string>(type: "text", nullable: false),
+                    AccountMobile = table.Column<string>(type: "text", nullable: false),
                     TelegramBotKey = table.Column<string>(type: "text", nullable: true),
-                    UserEntityId = table.Column<string>(type: "text", nullable: true)
+                    WorkerEntityId = table.Column<string>(type: "text", nullable: true),
+                    UserEntityId = table.Column<string>(type: "text", nullable: true),
+                    WorkerEntityId1 = table.Column<Guid>(type: "uuid", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -178,6 +191,29 @@ namespace FunpayGold.Persistence.Migrations
                         name: "FK_Bots_AspNetUsers_UserEntityId",
                         column: x => x.UserEntityId,
                         principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Bots_Workers_WorkerEntityId1",
+                        column: x => x.WorkerEntityId1,
+                        principalTable: "Workers",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BotActivities",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Message = table.Column<string>(type: "text", nullable: false),
+                    BotEntityId = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BotActivities", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_BotActivities_Bots_BotEntityId",
+                        column: x => x.BotEntityId,
+                        principalTable: "Bots",
                         principalColumn: "Id");
                 });
 
@@ -219,9 +255,19 @@ namespace FunpayGold.Persistence.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_BotActivities_BotEntityId",
+                table: "BotActivities",
+                column: "BotEntityId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Bots_UserEntityId",
                 table: "Bots",
                 column: "UserEntityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Bots_WorkerEntityId1",
+                table: "Bots",
+                column: "WorkerEntityId1");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -242,13 +288,19 @@ namespace FunpayGold.Persistence.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Bots");
+                name: "BotActivities");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
+                name: "Bots");
+
+            migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Workers");
         }
     }
 }

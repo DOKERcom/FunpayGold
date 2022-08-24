@@ -84,14 +84,14 @@ namespace FunpayGold.Persistence.Migrations
                     b.Property<string>("UserEntityId")
                         .HasColumnType("text");
 
-                    b.Property<Guid?>("WorkerId")
+                    b.Property<Guid?>("WorkerEntityId")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserEntityId");
 
-                    b.HasIndex("WorkerId");
+                    b.HasIndex("WorkerEntityId");
 
                     b.ToTable("Bots");
                 });
@@ -316,11 +316,9 @@ namespace FunpayGold.Persistence.Migrations
                         .WithMany("Bots")
                         .HasForeignKey("UserEntityId");
 
-                    b.HasOne("FunpayGold.Persistence.Entities.WorkerEntity", "Worker")
+                    b.HasOne("FunpayGold.Persistence.Entities.WorkerEntity", null)
                         .WithMany("Bots")
-                        .HasForeignKey("WorkerId");
-
-                    b.Navigation("Worker");
+                        .HasForeignKey("WorkerEntityId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
