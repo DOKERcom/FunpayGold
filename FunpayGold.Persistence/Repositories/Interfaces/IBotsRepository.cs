@@ -10,6 +10,7 @@ namespace FunpayGold.Persistence.Repositories.Interfaces
 {
     public interface IBotsRepository
     {
+        public Task<List<BotEntity>> GetAllActiveFreeBots();
 
         public Task<IdentityResult> AddBotToUserById(string userId);
 

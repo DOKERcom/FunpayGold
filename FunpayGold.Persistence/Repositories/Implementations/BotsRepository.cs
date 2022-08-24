@@ -29,6 +29,13 @@ namespace FunpayGold.Persistence.Repositories.Implementations
             _db = db;
         }
 
+        public async Task<List<BotEntity>> GetAllActiveFreeBots()
+        {
+            var bots = await _db.Bots.Where(b=>b.IsActive == true && b.Worker == null).ToListAsync();
+
+            return bots;
+        }
+
         public async Task<int> CreateBot(BotEntity bot)
         {
  

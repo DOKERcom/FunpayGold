@@ -23,9 +23,15 @@ namespace FunpayGold.Application
 
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
+            services.AddPersistenceServices(configuration);
+
             services.AddTransient<IUsersService, UsersService>();
 
             services.AddTransient<IBotsService, BotsService>();
+
+            services.AddTransient<IWorkersService, WorkersService>();
+
+            services.AddTransient<IBotActivitiesService, BotActivitiesService>();
 
             return services;
 

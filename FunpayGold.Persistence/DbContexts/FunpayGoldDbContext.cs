@@ -10,6 +10,11 @@ public sealed class FunpayGoldDbContext : IdentityDbContext<UserEntity>
 
     public DbSet<BotEntity> Bots { get; set; }
 
+    public DbSet<WorkerEntity> Workers { get; set; }
+
+    public DbSet<BotActivityEntity> BotActivities { get; set; }
+    
+
     public FunpayGoldDbContext(
         DbContextOptions<FunpayGoldDbContext> options
         ) : base(options)

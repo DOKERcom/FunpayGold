@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using FunpayGold.Application.Commands.HomeController;
 using FunpayGold.Application.Models;
-using FunpayGold.Common.Models;
+using FunpayGold.Common.ResultModels;
 using FunpayGold.MVC.Initializators.Intefaces;
 using FunpayGold.MVC.ViewModels;
 using MediatR;

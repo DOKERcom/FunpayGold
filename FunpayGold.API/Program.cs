@@ -1,4 +1,5 @@
 using FunpayGold.API;
+using FunpayGold.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,11 +8,16 @@ var configuration = builder.Configuration;
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddApiServices(configuration);
+
+builder.Services.AddApplicationServices(configuration);
 
 var app = builder.Build();
 
-builder.Services.AddApiServices(configuration);
+
 
 if (app.Environment.IsDevelopment())
 {

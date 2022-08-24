@@ -1,6 +1,6 @@
 ﻿using FunpayGold.Application.Commands.HomeController;
 using FunpayGold.Application.Services.Interfaces;
-using FunpayGold.Common.Models;
+using FunpayGold.Common.ResultModels;
 using FunpayGold.Persistence.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Identity;

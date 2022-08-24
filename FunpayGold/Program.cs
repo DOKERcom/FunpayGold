@@ -24,8 +24,6 @@ builder.Services.AddMvcServices(configuration);
 
 builder.Services.AddApplicationServices(configuration);
 
-builder.Services.AddPersistenceServices(configuration);
-
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())

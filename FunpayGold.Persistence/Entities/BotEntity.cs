@@ -5,7 +5,7 @@ public class BotEntity
 
     public Guid Id { get; set; } = Guid.NewGuid();
 
-    public string Name { get; set; } = String.Empty;
+    public string? Name { get; set; } = String.Empty;
 
     public bool IsActive { get; set; } = false;
 
@@ -22,5 +22,14 @@ public class BotEntity
     public string AccountMobile { get; set; } = String.Empty;
 
     public string? TelegramBotKey { get; set; } = String.Empty;
+
+    public WorkerEntity? Worker { get; set; }
+
+    public List<BotActivityEntity> BotActivities { get; set; }
+
+    public BotEntity()
+    {
+        BotActivities = new List<BotActivityEntity>();
+    }
 
 }

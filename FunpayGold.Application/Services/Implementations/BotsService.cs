@@ -25,6 +25,15 @@ namespace FunpayGold.Application.Services.Implementations
             _mapper = mapper;
         }
 
+        public async Task<List<BotModel>> GetAllActiveFreeBots()
+        {
+            var bots = await _botsRepository.GetAllActiveFreeBots();
+
+            var botModels = _mapper.Map<List<BotModel>>(bots);
+
+            return botModels;
+        }
+
         public async Task AddBotToUserById(string userId)
         {
             await _botsRepository.AddBotToUserById(userId);

@@ -21,4 +21,13 @@ public class BotModel
     public string AccountMobile { get; set; } = String.Empty;
 
     public string? TelegramBotKey { get; set; } = String.Empty;
+
+    public WorkerModel? Worker { get; set; }
+
+    public List<BotActivityModel> BotActivities { get; set; }
+
+    public BotModel()
+    {
+        BotActivities = new List<BotActivityModel>();
+    }
 }

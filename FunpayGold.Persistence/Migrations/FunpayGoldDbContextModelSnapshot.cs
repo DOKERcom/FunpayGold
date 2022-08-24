@@ -22,6 +22,26 @@ namespace FunpayGold.Persistence.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("FunpayGold.Persistence.Entities.BotActivityEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("BotId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BotId");
+
+                    b.ToTable("BotActivities");
+                });
+
             modelBuilder.Entity("FunpayGold.Persistence.Entities.BotEntity", b =>
                 {
                     b.Property<Guid>("Id")
@@ -32,11 +52,11 @@ namespace FunpayGold.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("AccountPassword")
+                    b.Property<string>("AccountMobile")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("AccountPhoneNumber")
+                    b.Property<string>("AccountPassword")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -44,10 +64,9 @@ namespace FunpayGold.Persistence.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Proxy")
+                    b.Property<string>("ProxyIp")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -65,9 +84,14 @@ namespace FunpayGold.Persistence.Migrations
                     b.Property<string>("UserEntityId")
                         .HasColumnType("text");
 
+                    b.Property<Guid?>("WorkerId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
 
                     b.HasIndex("UserEntityId");
+
+                    b.HasIndex("WorkerId");
 
                     b.ToTable("Bots");
                 });
@@ -134,6 +158,17 @@ namespace FunpayGold.Persistence.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("FunpayGold.Persistence.Entities.WorkerEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Workers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -268,11 +303,26 @@ namespace FunpayGold.Persistence.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("FunpayGold.Persistence.Entities.BotActivityEntity", b =>
+                {
+                    b.HasOne("FunpayGold.Persistence.Entities.BotEntity", "Bot")
+                        .WithMany("BotActivities")
+                        .HasForeignKey("BotId");
+
+                    b.Navigation("Bot");
+                });
+
             modelBuilder.Entity("FunpayGold.Persistence.Entities.BotEntity", b =>
                 {
                     b.HasOne("FunpayGold.Persistence.Entities.UserEntity", null)
                         .WithMany("Bots")
                         .HasForeignKey("UserEntityId");
+
+                    b.HasOne("FunpayGold.Persistence.Entities.WorkerEntity", "Worker")
+                        .WithMany("Bots")
+                        .HasForeignKey("WorkerId");
+
+                    b.Navigation("Worker");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -326,7 +376,17 @@ namespace FunpayGold.Persistence.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("FunpayGold.Persistence.Entities.BotEntity", b =>
+                {
+                    b.Navigation("BotActivities");
+                });
+
             modelBuilder.Entity("FunpayGold.Persistence.Entities.UserEntity", b =>
+                {
+                    b.Navigation("Bots");
+                });
+
+            modelBuilder.Entity("FunpayGold.Persistence.Entities.WorkerEntity", b =>
                 {
                     b.Navigation("Bots");
                 });

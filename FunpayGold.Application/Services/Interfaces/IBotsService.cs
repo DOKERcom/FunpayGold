@@ -9,6 +9,7 @@ namespace FunpayGold.Application.Services.Interfaces
 {
     public interface IBotsService
     {
+        public Task<List<BotModel>> GetAllActiveFreeBots();
 
         public Task AddBotToUserById(string userId);
 

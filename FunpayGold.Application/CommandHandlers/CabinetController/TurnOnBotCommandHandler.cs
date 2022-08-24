@@ -1,6 +1,6 @@
 ﻿using FunpayGold.Application.Commands.CabinetController;
 using FunpayGold.Application.Services.Interfaces;
-using FunpayGold.Common.Models;
+using FunpayGold.Common.ResultModels;
 using MediatR;
 using System;
 using System.Collections.Generic;

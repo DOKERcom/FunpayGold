@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using FunpayGold.Application.Commands.AdminPanelController;
 using FunpayGold.Application.Services.Interfaces;
-using FunpayGold.Common.Models;
+using FunpayGold.Common.ResultModels;
 using FunpayGold.MVC.ViewModels;
 using FunpayGold.Persistence.Entities;
 using MediatR;

@@ -16,6 +16,10 @@ namespace FunpayGold.Application.AutoMapper.Profiles
             CreateMap<BotEntity, BotModel>().ReverseMap();
 
             CreateMap<UserEntity, UserModel>().ReverseMap();
+
+            CreateMap<WorkerEntity, WorkerModel>().ReverseMap();
+
+            CreateMap<BotActivityEntity, BotActivityModel>().ReverseMap();
         }
 
     }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FunpayGold.Common.Models
+namespace FunpayGold.Common.ResultModels
 {
     public class ResultActionModel
     {
@@ -13,10 +13,15 @@ namespace FunpayGold.Common.Models
 
         public string ResultMessage { get; set; }
 
-        public ResultActionModel(int resultCode = 200, string resultMessage = "")
+        public object ResultObject { get; set; }
+
+        public ResultActionModel(int resultCode = 200, string resultMessage = "", object resultobject = null)
         {
             ResultCode = resultCode;
+
             ResultMessage = resultMessage;
+
+            ResultObject = resultobject;
         }
     }
 }

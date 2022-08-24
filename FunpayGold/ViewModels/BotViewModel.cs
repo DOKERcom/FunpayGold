@@ -1,4 +1,6 @@
-﻿namespace FunpayGold.MVC.ViewModels
+﻿using FunpayGold.Application.Models;
+
+namespace FunpayGold.MVC.ViewModels
 {
     public class BotViewModel
     {
@@ -23,5 +25,8 @@
 
         public string? TelegramBotKey { get; set; } = String.Empty;
 
+        public WorkerViewModel? Worker { get; set; }
+
+        public BotActivityViewModel? BotActivity { get; set; }
     }
 }

@@ -32,6 +32,10 @@ namespace FunpayGold.Persistence
 
             services.AddTransient<IBotsRepository, BotsRepository>();
 
+            services.AddTransient<IWorkersRepository, WorkersRepository>();
+
+            services.AddTransient<IBotActivitiesRepository, BotActivitiesRepository>();
+
             return services;
 
         }

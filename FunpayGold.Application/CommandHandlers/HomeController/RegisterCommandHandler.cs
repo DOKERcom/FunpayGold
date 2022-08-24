@@ -1,7 +1,7 @@
 ﻿using FunpayGold.Application.Commands.HomeController;
 using FunpayGold.Application.Models;
 using FunpayGold.Application.Services.Interfaces;
-using FunpayGold.Common.Models;
+using FunpayGold.Common.ResultModels;
 using MediatR;
 
 namespace FunpayGold.Application.CommandHandlers.HomeController
