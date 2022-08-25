@@ -55,7 +55,7 @@ namespace FunpayGold.Application.Services.Implementations
 
         public async Task<int> CreateBot()
         {
-            BotModel bot = new BotModel();
+            var bot = new BotModel();
 
             var botEntity = _mapper.Map<BotEntity>(bot);
 

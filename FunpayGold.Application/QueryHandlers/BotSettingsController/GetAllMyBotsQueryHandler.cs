@@ -34,7 +34,7 @@ namespace FunpayGold.Application.QueryHandlers.BotSettingsController
 
             var worker = await _workersService.GetWorker(request.WorkerId);
 
-            ResultActionModel resultActionModel = new ResultActionModel();
+            var resultActionModel = new ResultActionModel();
 
             resultActionModel.ResultObject = worker.Bots;
 

@@ -20,7 +20,7 @@ namespace FunpayGold.Persistence
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
 
-            string connection = configuration.GetConnectionString("DefaultConnection");
+            var connection = configuration.GetConnectionString("DefaultConnection");
 
             services.AddIdentity<UserEntity, IdentityRole>().AddEntityFrameworkStores<FunpayGoldDbContext>();
 

@@ -25,7 +25,7 @@ namespace FunpayGold.Application.CommandHandlers.CabinetController
 
         public async Task<ResultActionModel> Handle(UpdateBotSettingsCommand request, CancellationToken cancellationToken)
         {
-            string botId = request.Bot.Id.ToString();
+            var botId = request.Bot.Id.ToString();
 
             var bot = await _botsService.GetBotById(botId);
 

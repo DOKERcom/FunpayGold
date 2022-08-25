@@ -19,7 +19,7 @@ namespace FunpayGold.Application.CommandHandlers.HomeController
         public async Task<ResultActionModel> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
 
-            UserModel model = new UserModel();
+            var model = new UserModel();
 
             model.Username = request.RegisterModel.Username;
 

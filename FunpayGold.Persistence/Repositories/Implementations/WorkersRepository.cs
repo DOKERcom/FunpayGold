@@ -23,7 +23,7 @@ namespace FunpayGold.Persistence.Repositories.Implementations
 
         public async Task<bool> IsRegistered(Guid id)
         {
-            WorkerEntity worker = await GetWorker(id);
+            var worker = await GetWorker(id);
 
             if (worker == null)
                 return false;
@@ -49,7 +49,7 @@ namespace FunpayGold.Persistence.Repositories.Implementations
 
         public async Task<int> DeleteWorker(Guid id)
         {
-            WorkerEntity worker = await GetWorker(id);
+            var worker = await GetWorker(id);
 
             if (worker != null)
                 _db.Workers.Remove(worker);

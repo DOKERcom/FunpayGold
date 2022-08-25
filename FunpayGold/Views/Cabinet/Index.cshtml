@@ -32,7 +32,7 @@
                             <tr>
                                 <td>@bot.Id</td>
                                 <td>@bot.Name</td>
-                                <td><button class="info btn btn-primary btn-sm"><i class="fa-solid fa-barcode-read"></i></button></td>
+                                <td><button type="button" data-bs-toggle="modal" data-bs-target="#ViewBotLogsModal" class="info btn btn-primary btn-sm"><i class="fa-solid fa-barcode-read"></i></button></td>
                                 <td class="settings_btn_block">
                                     @if(bot.IsActive){
                                         <button id="TurnOffBot_@bot.Id" onclick="TurnOffBot('@bot.Id')" class="stopbot btn btn-primary btn-sm"><i class="flexitem fa-solid fa-stop"></i></button>
@@ -57,6 +57,25 @@
         </div>
     </div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="ViewBotLogsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Активность бота</h5>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="EditBotSettingsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

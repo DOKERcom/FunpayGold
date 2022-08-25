@@ -36,7 +36,7 @@ namespace FunpayGold.MVC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            string userName = HttpContext.User.Identity.Name;
+            var userName = HttpContext.User.Identity.Name;
 
             if (!string.IsNullOrEmpty(userName))
             {

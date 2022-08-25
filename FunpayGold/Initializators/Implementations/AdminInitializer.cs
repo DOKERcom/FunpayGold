@@ -20,14 +20,14 @@ namespace FunpayGold.MVC.Initializators.Implementations
 
         public async Task Initialize()
         {
-            string usermame = "root";
-            string password = "123Root!";
-            string email = "root@funpaygold.com";
+            var usermame = "root";
+            var password = "123Root!";
+            var email = "root@funpaygold.com";
 
             if (await _userManager.FindByNameAsync(usermame) == null)
             {
-                UserEntity admin = new UserEntity { Email = email, UserName = usermame };
-                IdentityResult result = await _userManager.CreateAsync(admin, password);
+                var admin = new UserEntity { Email = email, UserName = usermame };
+                var result = await _userManager.CreateAsync(admin, password);
                 if (result.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(admin, "admin");
