@@ -11,38 +11,50 @@
 
 <div class="main_container">
     <div class="mybotsform">
-        <h2>Мои боты</h2>         
-        <table class="table table-primary table-hover">
-        <thead>
-            <tr>
-            <th>ИНДЕТИФИКАТОР</th>
-            <th>НАЗВАНИЕ</th>
-            <th>АКТИВНОСТЬ</th>
-            <th>УПРАВЛЕНИЕ</th>
-            </tr>
-        </thead>
-        <tbody>
-        @{
-            foreach(var bot in Model.User.Bots)
-            {
+        <h2>Мои боты</h2>  
+        <div class="scroll-table">
+            <table class="table table-primary table-hover">
+                <thead>
                 <tr>
-                    <td>@bot.Id</td>
-                    <th>@bot.Name</th>
-                    <td><button class="info btn btn-primary btn-sm"><i class="fa-solid fa-barcode-read"></i></button></td>
-                    <td class="settings_btn_block">
-                    @if(bot.IsActive){
-                        <button id="TurnOffBot_@bot.Id" onclick="TurnOffBot('@bot.Id')" class="stopbot btn btn-primary btn-sm"><i class="flexitem fa-solid fa-stop"></i></button>
-                    }
-                    else{
-                        <button id="TurnOnBot_@bot.Id" onclick="TurnOnBot('@bot.Id')" class="startbot btn btn-primary btn-sm"><i class="flexitem fa-solid fa-play"></i></button>
-                    }
-                        <button onclick="SetBotSettingsModal('@bot.Id')" type="button" data-bs-toggle="modal" data-bs-target="#EditBotSettingsModal" class="editbot btn btn-primary btn-sm"><i class="flexitem fa-solid fa-pen-to-square"></i></button>
-                    </td>
+                    <th>ИНДЕТИФИКАТОР</th>
+                    <th>НАЗВАНИЕ</th>
+                    <th>АКТИВНОСТЬ</th>
+                    <th>УПРАВЛЕНИЕ</th>
                 </tr>
-            }
-        }
-        </tbody>
-        </table>
+                </thead>
+            </table>
+            <div class="scroll-table-body">
+                <table class="table table-primary table-hover">
+                    <tbody>
+                    @{
+                        foreach(var bot in Model.User.Bots)
+                        {
+                            <tr>
+                                <td>@bot.Id</td>
+                                <td>@bot.Name</td>
+                                <td><button class="info btn btn-primary btn-sm"><i class="fa-solid fa-barcode-read"></i></button></td>
+                                <td class="settings_btn_block">
+                                    @if(bot.IsActive){
+                                        <button id="TurnOffBot_@bot.Id" onclick="TurnOffBot('@bot.Id')" class="stopbot btn btn-primary btn-sm"><i class="flexitem fa-solid fa-stop"></i></button>
+                                    }
+                                    else{
+                                        <button id="TurnOnBot_@bot.Id" onclick="TurnOnBot('@bot.Id')" class="startbot btn btn-primary btn-sm"><i class="flexitem fa-solid fa-play"></i></button>
+                                    }
+                                    <button onclick="SetBotSettingsModal('@bot.Id')" type="button" data-bs-toggle="modal" data-bs-target="#EditBotSettingsModal" class="editbot btn btn-primary btn-sm"><i class="flexitem fa-solid fa-pen-to-square"></i></button>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    <tr class="table_buffer">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 

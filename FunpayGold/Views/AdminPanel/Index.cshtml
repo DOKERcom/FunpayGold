@@ -11,30 +11,41 @@
 
 <div class="main_container">
     <div class="usersform">
-        <h2>Пользователи</h2>         
+        <h2>Пользователи</h2>  
+        <div class="scroll-table">
         <table class="table table-primary table-hover">
-        <thead>
+            <thead>
             <tr>
-            <th>ИНДЕТИФИКАТОР</th>
-            <th>ИМЯ ПОЛЬЗОВАТЕЛЯ</th>
-            <th>УПРАВЛЕНИЕ БОТАМИ</th>
+                <th>ИНДЕТИФИКАТОР</th>
+                <th>ИМЯ ПОЛЬЗОВАТЕЛЯ</th>
+                <th>УПРАВЛЕНИЕ БОТАМИ</th>
             </tr>
-        </thead>
-        <tbody>
-            @{
-                foreach (var user in Model.Users) 
-                {
-                <tr>
-                    <td>@user.Id</td>
-                    <th>@user.Username</th>
-                    <td class="settings_btn_block">
-                        <button type="button" onclick="UpdateBotSettingsModal('@user.Id');" data-bs-toggle="modal" data-bs-target="#EditBotSettingsModal" class="editbots btn btn-primary btn-sm"><i class="flexitem fa-solid fa-pen-to-square"></i></button>
-                    </td>
-                </tr>
-                }
-            }
-        </tbody>
+            </thead>
         </table>
+            <div class="scroll-table-body">
+                <table class="table table-primary table-hover">
+                    <tbody>
+                    @{
+                        foreach (var user in Model.Users) 
+                        {
+                            <tr>
+                                <td>@user.Id</td>
+                                <td>@user.Username</td>
+                                <td class="settings_btn_block">
+                                    <button type="button" onclick="UpdateBotSettingsModal('@user.Id');" data-bs-toggle="modal" data-bs-target="#EditBotSettingsModal" class="editbots btn btn-primary btn-sm"><i class="flexitem fa-solid fa-pen-to-square"></i></button>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    <tr class="table_buffer">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 
