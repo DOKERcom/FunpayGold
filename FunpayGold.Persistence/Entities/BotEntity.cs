@@ -27,9 +27,13 @@ public class BotEntity
 
     public List<BotActivityEntity> BotActivities { get; set; }
 
+    public List<BotItemEntity> BotItems { get; set; }
+
     public BotEntity()
     {
         BotActivities = new List<BotActivityEntity>();
+
+        BotItems = new List<BotItemEntity>();
     }
 
 }

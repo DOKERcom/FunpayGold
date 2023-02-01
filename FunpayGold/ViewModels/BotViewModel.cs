@@ -25,8 +25,13 @@ namespace FunpayGold.MVC.ViewModels
 
         public string? TelegramBotKey { get; set; } = String.Empty;
 
-        public Guid? WorkerEntityId { get; set; }
+        public Guid? WorkerViewModelId { get; set; }
 
-        public BotActivityViewModel? BotActivity { get; set; }
+        public List<BotActivityViewModel> BotActivities { get; set; }
+
+        public BotViewModel()
+        {
+            BotActivities = new List<BotActivityViewModel>();
+        }
     }
 }

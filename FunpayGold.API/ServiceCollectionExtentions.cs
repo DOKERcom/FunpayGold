@@ -14,7 +14,6 @@ namespace FunpayGold.API
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
             return services;
-
         }
 
     }

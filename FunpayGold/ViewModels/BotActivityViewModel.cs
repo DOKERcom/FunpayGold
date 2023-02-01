@@ -5,7 +5,7 @@
 
         public Guid Id { get; set; } = Guid.NewGuid();
 
-        public string Text { get; set; }
+        public string Message { get; set; }
 
     }
 }

@@ -32,7 +32,7 @@
                             <tr>
                                 <td>@bot.Id</td>
                                 <td>@bot.Name</td>
-                                <td><button type="button" data-bs-toggle="modal" data-bs-target="#ViewBotLogsModal" class="info btn btn-primary btn-sm"><i class="fa-solid fa-barcode-read"></i></button></td>
+                                <td><button type="button" onclick="UpdateBotActivityModal('@bot.Id')" data-bs-toggle="modal" data-bs-target="#ViewBotLogsModal" class="info btn btn-primary btn-sm"><i class="fa-solid fa-barcode-read"></i></button></td>
                                 <td class="settings_btn_block">
                                     @if(bot.IsActive){
                                         <button id="TurnOffBot_@bot.Id" onclick="TurnOffBot('@bot.Id')" class="stopbot btn btn-primary btn-sm"><i class="flexitem fa-solid fa-stop"></i></button>
@@ -67,7 +67,16 @@
                 <h5 class="modal-title" id="exampleModalLongTitle">Активность бота</h5>
             </div>
             <div class="modal-body">
-
+                <table id="BotActivityModal" class="table table-primary table-hover">
+                    <thead>
+                    <tr>
+                        <th>АКТИВНОСТЬ БОТА</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @*added by js*@
+                    </tbody>
+                </table>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
@@ -134,21 +143,32 @@
                   </div>
                   <div class="col-md-3">
                     <label for="AccountMobile" class="form-label">Номер телефона (Аккаунт)</label>
-                    <input type="text" class="form-control" id="AccountMobile" required>
+                    <input type="text" name="age" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" maxlength="4" class="form-control" id="AccountMobile" required>
                     <div class="invalid-feedback">
                       Укажите верный номер телефона.
                     </div>
                   </div>
               </div>
               <div class="col-md-6">
-                <label for="TelegramBotKey" class="form-label">Ключ телеграм бота</label>
-                <input type="text" class="form-control" id="TelegramBotKey">
+                  <label for="TelegramBotKey" class="form-label">Ключ телеграм бота</label>
+                  <input type="text" class="form-control" id="TelegramBotKey">
               </div>
               <div class="col-12">
                 <button id="SaveChangesBotSettings" class="btn btn-primary" type="submit">Сохранить изменения</button>
               </div>
             </form>
-
+                <table id="BotItemsModalTable" class="table table-primary table-hover">
+                    <thead>
+                    <tr>
+                        <th>КЛЮЧЕВОЕ НАЗВАНИЕ</th>
+                        <th>УПРАВЛЕНИЕ</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @*added by js*@
+                    </tbody>
+                </table>
+                <button id="AddItemButton" type="button" class="btn btn-primary"><i class="fa-solid fa-circle-plus">Добавить</i></button>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>

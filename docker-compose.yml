@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  funpaygold.api:
+    image: ${DOCKER_REGISTRY-}funpaygoldapi
+    build:
+      context: .
+      dockerfile: FunpayGold.API\Dockerfile
+
+  funpaygold.mvc:
+    image: ${DOCKER_REGISTRY-}funpaygoldmvc
+    build:
+      context: .
+      dockerfile: FunpayGold\Dockerfile
+
+
+networks:
+    app-network:
+       driver: bridge

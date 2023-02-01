@@ -28,6 +28,31 @@ function ModalInputSetter(elemId, value) {
         elem.setAttribute("value", value);
 }
 
+
+function UpdateBotActivityModal(botid) {
+
+    var bots = CabinetViewModel.user.bots;
+
+    var tbody = document.getElementById('BotActivityModal').getElementsByTagName('tbody')[0];
+
+    var Parent = tbody;
+    while (Parent.hasChildNodes()) {
+        Parent.removeChild(Parent.lastChild);
+    }
+
+    bots.forEach(function (bot) {
+        if (bot.id == botid) {
+
+            var activities = bot.botActivities;
+
+            activities.forEach(function (activity) {
+                tbody.insertRow().innerHTML = '<tr><td>' + activity.message + '</td></tr>';
+            });
+        }
+    });
+
+}
+
 function SetBotSettingsModal(botId) {
 
     var bots = CabinetViewModel.user.bots;
